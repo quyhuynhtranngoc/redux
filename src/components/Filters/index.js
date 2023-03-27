@@ -2,8 +2,7 @@ import { Col, Radio, Row, Select, Tag } from "antd";
 import Search from "antd/es/transfer/search";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { searchFilter } from "../redux/actions";
-
+import { searchFilter } from "../../redux/actions";
 export default function Filters() {
   const [searchText, setSearchText] = useState("");
   const dispatch = useDispatch();
@@ -12,7 +11,7 @@ export default function Filters() {
     setSearchText(e.target.value);
     dispatch(searchFilter(e.target.value));
   };
-  
+
   return (
     <Row justify="center">
       <Col span={24}>
