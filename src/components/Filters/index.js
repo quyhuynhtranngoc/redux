@@ -2,10 +2,15 @@ import { Col, Radio, Row, Select, Tag } from "antd";
 import Search from "antd/es/transfer/search";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { searchFilter, statusFilter } from "../../redux/actions";
+import {
+  prioritiesFilter,
+  searchFilter,
+  statusFilter,
+} from "../../redux/actions";
 export default function Filters() {
   const [searchText, setSearchText] = useState("");
   const [status, setStatus] = useState("All");
+  const [priorities, setPriorities] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -17,7 +22,11 @@ export default function Filters() {
     setStatus(e.target.value);
     dispatch(statusFilter(e.target.value));
   };
-  
+  const handlePriority = (value) => {
+    // antd se tra ve value la 1 array
+    setPriorities(value);
+    dispatch(prioritiesFilter(value));
+  };
   return (
     <Row justify="center">
       <Col span={24}>
@@ -40,6 +49,8 @@ export default function Filters() {
           allowClear
           placeholder="Please select"
           style={{ width: "100%" }}
+          value={priorities}
+          onChange={handlePriority}
         >
           <Select.Option value="High" label="High">
             <Tag color="red">High</Tag>

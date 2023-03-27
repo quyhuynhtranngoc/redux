@@ -9,6 +9,8 @@ import Todo from "../Todo";
 export default function TodoList() {
   const [todoName, setTodoName] = useState("");
   const [priority, setPriority] = useState("Medium");
+
+  
   const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
