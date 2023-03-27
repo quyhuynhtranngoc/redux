@@ -2,16 +2,22 @@ import { Col, Radio, Row, Select, Tag } from "antd";
 import Search from "antd/es/transfer/search";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { searchFilter } from "../../redux/actions";
+import { searchFilter, statusFilter } from "../../redux/actions";
 export default function Filters() {
   const [searchText, setSearchText] = useState("");
+  const [status, setStatus] = useState("All");
+
   const dispatch = useDispatch();
 
   const handleSearchText = (e) => {
     setSearchText(e.target.value);
     dispatch(searchFilter(e.target.value));
   };
-
+  const handleStatus = (e) => {
+    setStatus(e.target.value);
+    dispatch(statusFilter(e.target.value));
+  };
+  
   return (
     <Row justify="center">
       <Col span={24}>
@@ -22,7 +28,7 @@ export default function Filters() {
         />
       </Col>
       <Col sm={24}>
-        <Radio.Group>
+        <Radio.Group value={status} onChange={handleStatus}>
           <Radio value="All">All</Radio>
           <Radio value="Completed">Completed</Radio>
           <Radio value="Todo">To do</Radio>

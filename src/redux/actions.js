@@ -5,9 +5,16 @@ export const addTodo = (data) => {
   };
 };
 
-export const searchFilter = text => {
+export const searchFilter = (text) => {
   return {
     type: "filters/searchFilter",
     payload: text,
   };
-}
+};
+
+export const statusFilter = (status) => {
+  return {
+    type: "filters/statusFilter",
+    payload: status,
+  };
+};
