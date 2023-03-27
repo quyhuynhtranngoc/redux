@@ -1,9 +1,10 @@
 import { Button, Col, Input, Row, Select, Space, Tag } from "antd";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Todo from "./Todo";
 import { v4 as uuidv4 } from "uuid";
 import { addTodo } from "../redux/actions";
+import { todosRemainingSelector } from "../redux/selectors";
+import Todo from "./Todo";
 
 export default function TodoList() {
   const [todoName, setTodoName] = useState("");
@@ -31,7 +32,9 @@ export default function TodoList() {
     setTodoName("");
     setPriority("Medium");
   };
-  const todoList = useSelector((state) => state.todoList);
+  // const todoList = useSelector((state) => state.todoList);
+  // const todoList = useSelector(todoListSelector);
+  const todoList = useSelector(todosRemainingSelector);
   return (
     <Row>
       <Col>

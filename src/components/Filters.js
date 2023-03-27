@@ -1,12 +1,26 @@
 import { Col, Radio, Row, Select, Tag } from "antd";
 import Search from "antd/es/transfer/search";
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { searchFilter } from "../redux/actions";
 
 export default function Filters() {
+  const [searchText, setSearchText] = useState("");
+  const dispatch = useDispatch();
+
+  const handleSearchText = (e) => {
+    setSearchText(e.target.value);
+    dispatch(searchFilter(e.target.value));
+  };
+  
   return (
     <Row justify="center">
       <Col span={24}>
-        <Search placeholder="input search text" />
+        <Search
+          placeholder="input search text"
+          value={searchText}
+          onChange={handleSearchText}
+        />
       </Col>
       <Col sm={24}>
         <Radio.Group>
