@@ -1,4 +1,4 @@
-import { Col, Radio, Row, Select, Tag } from "antd";
+import { Col, Radio, Row, Select, Tag, Typography } from "antd";
 import Search from "antd/es/transfer/search";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -30,6 +30,11 @@ export default function Filters() {
   return (
     <Row justify="center">
       <Col span={24}>
+        <Typography.Paragraph
+          style={{ fontWeight: "bold", marginBottom: 3, marginTop: 10 }}
+        >
+          Search
+        </Typography.Paragraph>
         <Search
           placeholder="input search text"
           value={searchText}
@@ -37,6 +42,11 @@ export default function Filters() {
         />
       </Col>
       <Col sm={24}>
+        <Typography.Paragraph
+          style={{ fontWeight: "bold", marginBottom: 3, marginTop: 10 }}
+        >
+          Filter By Status
+        </Typography.Paragraph>
         <Radio.Group value={status} onChange={handleStatus}>
           <Radio value="All">All</Radio>
           <Radio value="Completed">Completed</Radio>
@@ -44,6 +54,11 @@ export default function Filters() {
         </Radio.Group>
       </Col>
       <Col sm={24}>
+        <Typography.Paragraph
+          style={{ fontWeight: "bold", marginBottom: 3, marginTop: 10 }}
+        >
+          Filter By Priority
+        </Typography.Paragraph>
         <Select
           mode="multiple"
           allowClear
