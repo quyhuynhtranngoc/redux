@@ -5,6 +5,13 @@ export const addTodo = (data) => {
   };
 };
 
+export const toggleTodoStatus = (todoId) => {
+  return {
+    type: "todoList/toggleTodoStatus",
+    payload: todoId,
+  };
+};
+
 export const searchFilter = (text) => {
   return {
     type: "filters/searchFilter",

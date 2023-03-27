@@ -10,7 +10,6 @@ export default function TodoList() {
   const [todoName, setTodoName] = useState("");
   const [priority, setPriority] = useState("Medium");
 
-  
   const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
@@ -43,6 +42,7 @@ export default function TodoList() {
         {todoList.map((todo) => (
           <Todo
             key={todo.id}
+            id={todo.id}
             name={todo.name}
             prioriry={todo.priority}
             completed={todo.completed}

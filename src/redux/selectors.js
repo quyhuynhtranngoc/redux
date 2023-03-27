@@ -20,7 +20,6 @@ export const todosRemainingSelector = createSelector(
   statusSelector,
   prioritiesSelector,
   (todoList, searchText, status, priorities) => {
-    console.log(priorities);
     return todoList.filter((todo) => {
       if (status === "All") {
         return priorities.length
